@@ -1,0 +1,310 @@
+\documentclass{article}
+
+\usepackage{bchart}
+
+\title{\texttt{bchart}: Simple Bar Charts in \LaTeX}
+\author{Tobias Kuhn}
+\date{12 August 2011}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\texttt{bchart} is a {\LaTeX} package for drawing simple bar charts with horizontal bars on a numerical x-axis. It is based on the TikZ drawing package. The focus of this package is on simplicity and aesthetics.
+\end{abstract}
+
+
+\section{Introduction}
+
+Loading the package:
+\begin{quote}\small
+\begin{verbatim}
+\usepackage{bchart}
+\end{verbatim}
+\end{quote}
+
+
+\section{Charts}
+
+A very simple chart:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[max=50]
+  \bcbar{45}
+  \bcbar{26}
+  \bcbar{31}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[max=50]
+  \bcbar{45}
+  \bcbar{26}
+  \bcbar{31}
+\end{bchart}
+\end{quote}
+\texttt{min} and \texttt{step} arguments:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[min=2.5,step=0.25,max=3.75]
+  \bcbar{2.6}
+  \bcbar{3.7}
+  \bcbar{3.1}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[min=2.5,step=0.25,max=3.75]
+  \bcbar{2.6}
+  \bcbar{3.7}
+  \bcbar{3.1}
+\end{bchart}
+\end{quote}
+\texttt{steps} argument:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[min=1,max=18,steps={1,3,7,15}]
+  \bcbar{13}
+  \bcbar{4}
+  \bcbar{7}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[min=1,max=18,steps={1,3,7,15}]
+  \bcbar{13}
+  \bcbar{4}
+  \bcbar{7}
+\end{bchart}
+\end{quote}
+Plain:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[max=8,plain]
+  \bcbar{6.2}
+  \bcbar{1.8}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[max=8,plain]
+  \bcbar{6.2}
+  \bcbar{1.8}
+\end{bchart}
+\end{quote}
+
+
+\section{Bars}
+
+Bars with text:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=2,max=8]
+  \bcbar[text=Year 1]{6}
+  \bcbar[text=Year 2]{3}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=2,max=8]
+  \bcbar[text=Year 1]{6}
+  \bcbar[text=Year 2]{3}
+\end{bchart}
+\end{quote}
+Colors:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[max=8]
+  \bcbar[text=A,color=yellow]{6}
+  \bcbar[text=B,color=red!50]{3}
+  \bcbar[text=C,color=green!60!blue]{4}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[max=8]
+  \bcbar[text=A,color=yellow]{6}
+  \bcbar[text=B,color=red!50]{3}
+  \bcbar[text=C,color=green!60!blue]{4}
+\end{bchart}
+\end{quote}
+Plain bars:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=1,max=8]
+  \bcbar[plain]{6}
+  \bcbar[plain]{3}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=1,max=8]
+  \bcbar[plain]{6}
+  \bcbar[plain]{3}
+\end{bchart}
+\end{quote}
+
+
+\section{Skips}
+
+Small, medium and big skips:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=2,max=10]
+  \bcbar{3.4}
+  \smallskip
+  \bcbar{5.6}
+  \medskip
+  \bcbar{7.2}
+  \bigskip
+  \bcbar{9.9}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=2,max=10]
+  \bcbar{3.4}
+  \smallskip
+  \bcbar{5.6}
+  \medskip
+  \bcbar{7.2}
+  \bigskip
+  \bcbar{9.9}
+\end{bchart}
+\end{quote}
+Skips with \texttt{bcskip}:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=10,max=100]
+  \bcbar{83}
+  \bcskip{3pt}
+  \bcbar{25}
+  \bcskip{15mm}
+  \bcbar{69}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=10,max=100]
+  \bcbar{83}
+  \bcskip{3pt}
+  \bcbar{25}
+  \bcskip{15mm}
+  \bcbar{69}
+\end{bchart}
+\end{quote}
+
+
+\section{Labels}
+
+Label for x axis:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=200,max=1000]
+  \bcbar[text=Company A]{346}
+  \bcbar[text=Company B]{873}
+  \bcxlabel{number of employees}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=200,max=1000]
+  \bcbar[text=Company A]{346}
+  \bcbar[text=Company B]{873}
+  \bcxlabel{number of employees}
+\end{bchart}
+\end{quote}
+
+
+\section{Units}
+
+TODO
+
+
+\section{Width and Scaling}
+
+TODO
+
+
+\section{Known Issues}
+
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=0.2,max=1]
+  \bcbar{0.76}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=0.2,max=1]
+  \bcbar{0.76}
+\end{bchart}
+\end{quote}
+
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[steps={0.2,0.4,0.6,0.8,1},max=1]
+  \bcbar{0.76}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[steps={0.2,0.4,0.6,0.8,1},max=1]
+  \bcbar{0.76}
+\end{bchart}
+\end{quote}
+
+
+
+\begin{bchart}[plain]
+\bcxlabel{test}
+\bcbar[plain]{31}
+\bcbar[plain]{76}
+\end{bchart}
+
+\begin{bchart}[min=0.75,step=0.25,max=3]
+\bcbar{1.2}
+\bcbar{2.1}
+\end{bchart}
+
+\begin{bchart}[max=100,step=10,width=0.8\textwidth]
+\bcxlabel{numbers}
+\bcbar{31}
+\bcbar{74}
+\end{bchart}
+
+\begin{bchart}[max=3,step=1]
+\bcxlabel{questionnaire score for understandability}
+\bcbar[color=yellow,text=ACE]{2.59}
+\smallskip[label=skiplabel]
+\bcbar[color=red,text=MLL]{1.92}
+\end{bchart}
+
+\begin{bchart}[min=30,max=100,step=10,unit=\%]
+\bcxlabel{percentages}
+\bcbar[color=red]{87}
+\bclabel{free label}
+\bcbar{73}
+\bigskip
+\bcbar[label=blo,color=green]{45}
+\end{bchart}
+
+\begin{bchart}[min=1,max=3,step=1]
+\bcbar[text=ACE,label=xxx]{2.59}
+\bcbar[text=MLL]{1.92}
+\bclabel{inter}
+\bcbar[text=XXX]{1.54}
+\bcskip[label=my skip]{1.5mm}
+\bcbar[text=max]{3.00}
+\end{bchart}
+
+\begin{bchart}[min=-3,max=-1,step=1]
+\bcbar[text=ACE,label=xxx]{-2.59}
+\bcbar[text=MLL]{-1.92}
+\bclabel{inter}
+\bcbar[text=XXX]{-1.54}
+\end{bchart}
+
+\end{document}
+
