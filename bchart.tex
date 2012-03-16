@@ -7,10 +7,10 @@
 \title{
   \texttt{bchart}: Simple Bar Charts in \LaTeX
   \medskip\\
-  \large Version 0.1.0
+  \large Version 0.1.1
 }
 \author{Tobias Kuhn}
-\date{22 November 2011}
+\date{16 March 2012}
 
 \begin{document}
 
@@ -149,6 +149,22 @@ The \texttt{plain}-flag can be used to prevent the value of the bar to be displa
 \begin{bchart}[step=1,max=8]
   \bcbar[plain]{6}
   \bcbar[plain]{3}
+\end{bchart}
+\end{quote}
+
+With the \texttt{value}-option, the value to be displayed to the right of the bar can be modified:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[step=2,max=8]
+  \bcbar[value=six]{6}
+  \bcbar[value=III]{3}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[step=2,max=8]
+  \bcbar[value=six]{6}
+  \bcbar[value=III]{3}
 \end{bchart}
 \end{quote}
 
@@ -360,7 +376,9 @@ These three ways to change the size of the chart can all be combined to produce 
 
 \section{Known Issues}
 
-There is currently one known issue with this package. When using fractions in the \texttt{step}-option, sometimes rounding errors become apparent:
+There are some known issues with this package. Below, they are discussed and workarounds are presented.
+
+When using fractions in the \texttt{step}-option, sometimes rounding errors become apparent:
 \begin{quote}\small
 \begin{verbatim}
 \begin{bchart}[step=0.2,max=1]
@@ -386,6 +404,29 @@ As a workaround, the \texttt{steps}-option can be used instead, where all marks 
   \bcbar{0.76}
 \end{bchart}
 \end{quote}
+
+Another known issue is the fact that you can get a \LaTeX{} error message saying ``Dimension too large'' when using large numbers:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[max=20000]
+  \bcbar{18000}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+A possible workaround is moving the decimal point of all numbers by a couple of digits and manually adding the real value with the \texttt{value}-option:
+\begin{quote}\small
+\begin{verbatim}
+\begin{bchart}[max=20]
+  \bcbar[value=18000]{18}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\begin{bchart}[max=20]
+  \bcbar[value=18000]{18}
+\end{bchart}
+\end{quote}
+This is only a partial workaround though, since the numbers on the x-axis cannot be manually modified.
 
 \end{document}
 

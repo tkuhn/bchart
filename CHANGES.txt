@@ -1,0 +1,7 @@
+Changelog for bchart
+====================
+
+Version 0.1.1:
+- New "value" option for bars
+- Discussion of known issue with "Dimension too large" error
+

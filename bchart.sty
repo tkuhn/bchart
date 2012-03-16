@@ -1,8 +1,8 @@
 %-------------------------------------------------------------------------------
 % bchart (LaTeX package)
 %-------------------------------------------------------------------------------
-% Version: 0.1.0
-% Date: 22 November 2011
+% Version: 0.1.1
+% Date: 16 March 2012
 % Author: Tobias Kuhn
 %-------------------------------------------------------------------------------
 
@@ -45,11 +45,13 @@
 \newcommand{\bcbarcolor}{}
 \newcommand{\bcbartext}{}
 \newcommand{\bcbarlabel}{}
+\newcommand{\bcbarvalue}{}
 \newcommand{\bcplainbar}{}
 \makeatletter
 \define@key{bcbar}{color}{\renewcommand{\bcbarcolor}{#1}}
 \define@key{bcbar}{text}{\renewcommand{\bcbartext}{#1}}
 \define@key{bcbar}{label}{\renewcommand{\bcbarlabel}{#1}}
+\define@key{bcbar}{value}{\renewcommand{\bcbarvalue}{#1}}
 \define@key{bcbar}{plain}[false]{\renewcommand{\bcplainbar}{true}}
 \makeatother
 
@@ -71,6 +73,7 @@
     \renewcommand{\bcbarcolor}{blue!20}
     \renewcommand{\bcbartext}{}
     \renewcommand{\bcbarlabel}{}
+    \renewcommand{\bcbarvalue}{##2\bcunit}
     \renewcommand{\bcplainbar}{false}
     % Read parameters:
     \setkeys{bcbar}{##1}
@@ -79,7 +82,7 @@
     \draw (0,\bcpos) rectangle ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-5mm)$);
     \ifthenelse{\equal{\bcplainbar}{true}}{}{
       % Write value:
-      \node[anchor=west] at ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-2.5mm)$) {\sf ##2\bcunit};
+      \node[anchor=west] at ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-2.5mm)$) {\sf \bcbarvalue};
     }
     % Write text:
     \node[anchor=west] at (0,\bcpos-2.5mm) {\sf \bcbartext};
