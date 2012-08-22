@@ -1,8 +1,8 @@
 %-------------------------------------------------------------------------------
 % bchart (LaTeX package)
 %-------------------------------------------------------------------------------
-% Version: 0.1.1
-% Date: 16 March 2012
+% Version: 0.1.2
+% Date: 22 August 2012
 % Author: Tobias Kuhn
 %-------------------------------------------------------------------------------
 
@@ -17,6 +17,11 @@
 
 \newlength{\bcpos}
 \newlength{\bcwidth}
+
+
+% Global Arguments
+
+\newcommand{\bcfontstyle}{\sf}
 
 
 % Chart Arguments
@@ -82,19 +87,19 @@
     \draw (0,\bcpos) rectangle ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-5mm)$);
     \ifthenelse{\equal{\bcplainbar}{true}}{}{
       % Write value:
-      \node[anchor=west] at ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-2.5mm)$) {\sf \bcbarvalue};
+      \node[anchor=west] at ($##2-\bcmin*(\bcwidth/\bcrange,0) + (0,\bcpos-2.5mm)$) {\bcfontstyle\bcbarvalue};
     }
     % Write text:
-    \node[anchor=west] at (0,\bcpos-2.5mm) {\sf \bcbartext};
+    \node[anchor=west] at (0,\bcpos-2.5mm) {\bcfontstyle\bcbartext};
     % Write label:
-    \node[anchor=east] at (0,\bcpos-2.5mm) {\sf \bcbarlabel};
+    \node[anchor=east] at (0,\bcpos-2.5mm) {\bcfontstyle\bcbarlabel};
     % Move vertical position downward:
     \addtolength{\bcpos}{-5mm}
   }%
   % Labels:
   \newcommand{\bclabel}[1]{
     % Write label:
-    \node[anchor=east] at (0,\bcpos) {\sf ##1};
+    \node[anchor=east] at (0,\bcpos) {\bcfontstyle##1};
   }%
   % General skips:
   \newcommand{\bcskip}[2][]{
@@ -103,7 +108,7 @@
     % Read parameters:
     \setkeys{bcskip}{##1}
     % Write label:
-    \node[anchor=east] at ($(0,\bcpos) - 0.5*(0,##2)$) {\sf \bcskiplabel};
+    \node[anchor=east] at ($(0,\bcpos) - 0.5*(0,##2)$) {\bcfontstyle\bcskiplabel};
     % Move vertical position downward:
     \addtolength{\bcpos}{-##2}
   }%
@@ -147,20 +152,20 @@
       % Draw start value and set position for x-axis label:
       \draw (0,\bcpos) -- (0,\bcpos-1mm);
       \node[anchor=north] (n) at (0,\bcpos-1mm)
-        {\sf \bcstripunit{\dimexpr\bcmin pt\relax}\bcunit};
+        {\bcfontstyle\bcstripunit{\dimexpr\bcmin pt\relax}\bcunit};
       \coordinate (labelpos) at (n.south);
       % Draw other values:
       \foreach \x in \bcsteps {
         \ifthenelse{\equal{\x}{0}}{}{
           \draw ($\x*(\bcwidth/\bcrange,0) + (0,\bcpos)$) -- ($\x*(\bcwidth/\bcrange,0) + (0,\bcpos-1mm)$);
           \node[anchor=north] at ($\x*(\bcwidth/\bcrange,0) + (0,\bcpos-1mm)$)
-            {\sf \bcstripunit{\dimexpr\bcmin pt+\x pt\relax}\bcunit};
+            {\bcfontstyle\bcstripunit{\dimexpr\bcmin pt+\x pt\relax}\bcunit};
         }
       }
     }
     % Write x-axis label:
     \ifthenelse{\equal{\getbcxlabel}{}}{}{
-      \node[anchor=north,inner sep=0.5mm] at ($0.5*(\bcwidth,0) + (labelpos)$) {\sf \getbcxlabel};
+      \node[anchor=north,inner sep=0.5mm] at ($0.5*(\bcwidth,0) + (labelpos)$) {\bcfontstyle\getbcxlabel};
     }
   \end{tikzpicture}%
 }

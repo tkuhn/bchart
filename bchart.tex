@@ -7,10 +7,10 @@
 \title{
   \texttt{bchart}: Simple Bar Charts in \LaTeX
   \medskip\\
-  \large Version 0.1.1
+  \large Version 0.1.2
 }
 \author{Tobias Kuhn}
-\date{16 March 2012}
+\date{22 August 2012}
 
 \begin{document}
 
@@ -95,6 +95,36 @@ The \texttt{plain}-flag hides all marks:
 \begin{bchart}[max=8,plain]
   \bcbar{6.2}
   \bcbar{1.8}
+\end{bchart}
+\end{quote}
+The font style is sans-serif by default. This can be changed by redefining the command \texttt{bcfontstyle}:
+\begin{quote}\small
+\begin{verbatim}
+\renewcommand{\bcfontstyle}{\bfseries}
+\begin{bchart}[max=10,step=1]
+  \bcbar{5.7}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\renewcommand{\bcfontstyle}{\bfseries}
+\begin{bchart}[max=10,step=1]
+  \bcbar{5.7}
+\end{bchart}
+\end{quote}
+With an empty argument, the default font of the document is used:
+\begin{quote}\small
+\begin{verbatim}
+\renewcommand{\bcfontstyle}{}
+\begin{bchart}[max=10,step=1]
+  \bcbar{5.7}
+\end{bchart}
+\end{verbatim}
+\end{quote}
+\begin{quote}
+\renewcommand{\bcfontstyle}{}
+\begin{bchart}[max=10,step=1]
+  \bcbar{5.7}
 \end{bchart}
 \end{quote}
 
@@ -221,7 +251,7 @@ With the \texttt{bcskip}-command, skips of arbitrary size can be inserted:
 
 \section{Labels}
 
-The x-axis can be labelled by calling the \texttt{bcxlabel}-command:
+The x-axis can be labeled by calling the \texttt{bcxlabel}-command:
 \begin{quote}\small
 \begin{verbatim}
 \begin{bchart}[step=200,max=1000]
@@ -391,7 +421,7 @@ When using fractions in the \texttt{step}-option, sometimes rounding errors beco
   \bcbar{0.76}
 \end{bchart}
 \end{quote}
-As a workaround, the \texttt{steps}-option can be used instead, where all marks must be listed explicitely:
+As a workaround, the \texttt{steps}-option can be used instead, where all marks must be listed explicitly:
 \begin{quote}\small
 \begin{verbatim}
 \begin{bchart}[steps={0.2,0.4,0.6,0.8,1},max=1]
